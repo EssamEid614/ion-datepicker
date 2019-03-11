@@ -10,6 +10,8 @@ import { DateService } from '../services/datepicker.service';
     <div class="datepicker-header"
         [ngClass]="config.headerClasses">
         <div class="weekday-header">
+        <h1>hello world</h1>
+        <input type="number" [(ngModel)]="SelectedHours" />
             <div class="weekday-title">{{getSelectedWeekday()}}</div>
         </div>
         <div class="date-header">
@@ -331,6 +333,20 @@ export class DatePickerComponent {
      * @description - Today's date
      * @memberof DatePickerComponent
      */
+
+
+
+    private SelectedHours: number;
+    /**
+     * 
+     * @private
+     * @type {string}
+     * @description - Selected hours from the time menu
+     * @memberof DatePickerComponent
+     */
+
+
+
     private today: Date = new Date();
     /**
      * 
@@ -683,6 +699,8 @@ export class DatePickerComponent {
     */
     public onDone(): void {
         this.config.date = this.tempDate;
+        console.log(this.SelectedHours);
+        this.config.date.setHours(this.SelectedHours,0,0)
         this.config.ionChanged.emit(this.config.date);
         this.viewCtrl.dismiss();
     };

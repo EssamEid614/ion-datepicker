@@ -8,4 +8,6 @@ if (! packageJson) {
 
 delete packageJson.devDependencies;
 
-fs.writeFile('./dist/package.json', JSON.stringify(packageJson, null, 2));
+fs.writeFile('./dist/package.json', JSON.stringify(packageJson, null, 2), function(err, result) {
+    if(err) console.log('error', err);
+  });
